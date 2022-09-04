@@ -8,28 +8,17 @@ app.set("view engine", "ejs");
 //get function for home route
 app.get("/", function (req, res) {
   var today = new Date(); //getting current date
-  var currentDay = today.getDay(); //storing date
+  
   var day = {};
-  //Condition for each day 
-  if (currentDay === 1) {
-    day = "Monday";
- } 
- else if(currentDay === 2) {
-    day = "tuesday";
- } 
- else if(currentDay === 3) {
-    day = "Wednesday";
- } else if(currentDay === 4) {
-    day = "Thursday";
- } else if(currentDay === 5) {
-    day = "Friday";
- } else if(currentDay === 6) {
-    day = "Saturday";
- } 
- else {
-    day = "Sunday";
-  }
-  res.render("list", { kindOdDay: day }); //passing result of logic to template file
+ //declaring var for date
+  var options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  };
+  //returning date as a string in
+  var day = today.toLocaleDateString("en-US",options);
+  res.render("list", { kindOfDay: day }); //passing result of logic to template file
 });
 
 //declaring port no
