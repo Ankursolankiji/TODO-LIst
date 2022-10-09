@@ -46,6 +46,6 @@ app.post("/", function (req, res) {
 });
 
 //declaring port no
-app.listen(3000, function () {
-  console.log("the server is live on port 3000");
+app.listen(process.env.PORT || 3000, function () {
+  console.log("Server started on port 3000");
 });
