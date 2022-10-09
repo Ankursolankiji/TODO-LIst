@@ -7,7 +7,7 @@ const date = require(__dirname + "/date.js");
 const app = express();
 
 //declaring array for tasks
-const tasks = ["buy food", "read", "ded"];
+const tasks = ["cook","eat","lift"];
 const workItems = []; //array for work
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +27,9 @@ app.get("/work", function (req, res) {
   res.render("list", { listTitle: "Work List", newItems: workItems });
 });
 
+app.get("/about",function(req,res){
+  res.render("about");
+})
 app.post("/", function (req, res) {
     const task = req.body.newTask;
     if (req.body.list ===  'Work List '){
